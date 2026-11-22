@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Student Portal{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="profile">
+            <div class="avatar">{{ user.name[0]|upper }}</div>
+            <div>
+                <h1>Hello, {{ user.name }} 👋</h1>
+                <span class="badge badge-{{ user.role }}">{{ user.role }}</span>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item"><span>Full name</span><strong>{{ user.name }}</strong></div>
+            <div class="info-item"><span>Email</span><strong>{{ user.email }}</strong></div>
+            <div class="info-item"><span>Role</span><strong>{{ user.role }}</strong></div>
+        </div>
+
+        <div class="actions">
+            {% if user.role == "admin" %}
+                <a class="btn btn-outline" href="/admin">Open Admin page</a>
+            {% endif %}
+            <form action="/logout" method="post">
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

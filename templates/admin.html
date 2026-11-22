@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Admin - Student Portal{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-head">
+        <div>
+            <h1>Admin Dashboard</h1>
+            <span class="subtitle">Welcome, {{ user.name }}. This page is only visible to administrators.</span>
+        </div>
+        <form action="/logout" method="post" style="margin:0;">
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    </div>
+
+    <div class="stats">
+        <div class="stat stat-1"><div class="num">{{ total }}</div><div class="lbl">Total users</div></div>
+        <div class="stat stat-2"><div class="num">{{ students }}</div><div class="lbl">Students</div></div>
+        <div class="stat stat-3"><div class="num">{{ admins }}</div><div class="lbl">Admins</div></div>
+    </div>
+
+    <div class="card">
+        <h2>Registered users</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th></tr>
+                </thead>
+                <tbody>
+                    {% for u in users %}
+                    <tr>
+                        <td>{{ u.id }}</td>
+                        <td>{{ u.name }}</td>
+                        <td>{{ u.email }}</td>
+                        <td><span class="badge badge-{{ u.role }}">{{ u.role }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

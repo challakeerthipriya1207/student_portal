@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Student Portal{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="hero">
+        <h1>Your student account,<br>all in one place</h1>
+        <p>Create your account, log in securely and manage your student profile in the Student Portal.</p>
+        {% if user %}
+            <a class="btn" href="/dashboard">Go to Dashboard</a>
+        {% else %}
+            <a class="btn" href="/register">Get Started</a>
+            <a class="btn btn-ghost" href="/login">Login</a>
+        {% endif %}
+    </section>
+
+    <section class="features">
+        <div class="card feature">
+            <div class="icon">🔐</div>
+            <h3>Secure passwords</h3>
+            <p>Passwords are hashed with Argon2 and never stored in plain text.</p>
+        </div>
+        <div class="card feature">
+            <div class="icon">👤</div>
+            <h3>Personal dashboard</h3>
+            <p>A private page that shows only your own account details.</p>
+        </div>
+        <div class="card feature">
+            <div class="icon">🛡️</div>
+            <h3>Role-based access</h3>
+            <p>Admin pages are protected on the server, not just hidden.</p>
+        </div>
+    </section>
+</div>
+{% endblock %}
